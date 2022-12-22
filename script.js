@@ -17,7 +17,7 @@ const dictionary = (word) => {
       const data = response.list
 
       Array.from(def).forEach((elem, i) => {
-        elem.innerText =` - `+ data[i].definition
+        elem.innerText =`${i+1}) - `+ data[i].definition
       }
       )
       // def.innerText=data[0].definition
