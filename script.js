@@ -1,5 +1,5 @@
 let def = document.getElementsByClassName("def")
-let searchWord = document.getElementById("searchWord")
+// let searchWord = document.getElementById("searchWord")
 const dictionary = (word) => {
 
   const options = {
@@ -13,11 +13,11 @@ const dictionary = (word) => {
   fetch(`https://urban-dictionary7.p.rapidapi.com/v0/define?term=${word}`, options)
     .then(response => response.json())
     .then(response => {
-      console.log(response)
+      // console.log(response)
       const data = response.list
 
       Array.from(def).forEach((elem, i) => {
-        elem.innerText =`${i+1}) - `+ data[i].definition
+        elem.innerText =" → " + data[i].definition
       }
       )
       // def.innerText=data[0].definition
@@ -43,4 +43,9 @@ let searchBar = document.getElementById("searchBar")
 let searchBtn = document.getElementById("searchBtn")
 searchBtn.addEventListener(("click"), (e) => {
   dictionary(searchBar.value)
+})
+searchBar.addEventListener(("keypress"), (e) => {
+  if (e.key=="Enter") {
+    dictionary(searchBar.value)
+  }
 })
